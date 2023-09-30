@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
 
-Route::get('/test', function () {
-    return view('admin.test');
+Route::group(['prefix' => 'admin' , 'middelware' => 'geust'] , function() {
+    Route::get('/login' , [AdminController::class , 'index'])->name('auth_view');
+    Route::post('/login/check' , [AdminController::class , 'check'])->name('check_login');
 });

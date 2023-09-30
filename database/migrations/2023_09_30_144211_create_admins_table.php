@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username' , 100);
             $table->string('password' , 255);
             $table->integer('added_by');
-            $table->integer('upfated_by');
+            $table->integer('updated_by');
             $table->tinyInteger('active');
             $table->date('date');
             $table->timestamps();

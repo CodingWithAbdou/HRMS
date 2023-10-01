@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 
@@ -23,8 +24,10 @@ class AdminController extends Controller
         return view('admin.auth.index');
     }
 
-    public function check()
+    public function check(LoginRequest $request)
     {
-        return back();
+        $data = $request;
+        dd($data);
+        // return back();
     }
 }

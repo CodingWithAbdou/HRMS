@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['prefix' => 'admin' , 'middelware' => 'geust'] , function() {
-    Route::get('/login' , [AdminController::class , 'index'])->name('auth_view');
-    Route::post('/login/check' , [AdminController::class , 'check'])->name('check_login');
+    Route::get('/login' , [AdminController::class , 'index'])->name('login_view');
+    Route::post('/login' , [AdminController::class , 'check'])->name('check_login');
 });

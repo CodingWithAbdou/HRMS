@@ -26,7 +26,7 @@
                 <form action="{{route('check_login')}}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="إسم المستخدم" dir="rtl">
+                        <input type="text" name="username" class="form-control" placeholder="إسم المستخدم" dir="rtl">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="الرقم السري" dir="rtl">
+                        <input type="password" name="password" class="form-control" placeholder="الرقم السري" dir="rtl">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">تسجيل الدخول</button>
                     </div>
                 </form>
             </div>

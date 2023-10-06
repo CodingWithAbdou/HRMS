@@ -32,9 +32,17 @@ class LoginController extends Controller
             'password' => $request->input('password')
         ];
         if (auth()->guard('admin')->attempt($data)) {
-            return view('admin.test');
+            return redirect()->route('dashboard_view');
         } else {
             return redirect()->route('login_view')->with(['error' => 'عفوا بيانات التسجيل غير صحيحة !!']);
         }
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+
+        return redirect()->route('login_view');
+
     }
 }

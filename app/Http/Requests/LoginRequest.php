@@ -22,16 +22,16 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-         'username'=>'required',
-         'password'=>'required'
+            'username'=>'required',
+            'password'=>'required'
         ];
 
     }
-    public function messages()
-    {
-    return [
-     'username.required'=>'اسم المستخدم مطلوب',
-     'password.required'=>'كلمة المرور مطلوبة'
-    ];
-    }
+    // public function messages()
+    // {
+    // return [
+    //  'username.required'=>'اسم المستخدم مطلوب',
+    //  'password.required'=>'كلمة المرور مطلوبة'
+    // ];
+    // }
 }

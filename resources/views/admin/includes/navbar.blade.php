@@ -5,10 +5,10 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">الرئيسية</a>
+            <a href="{{ route('dashboard_view') }}" class="nav-link">الرئيسية</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">تسجيل الخروج</a>
+            <a href="{{ route('logout_view') }}" class="nav-link">تسجيل الخروج</a>
         </li>
     </ul>
 

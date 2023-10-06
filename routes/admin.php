@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['prefix' => 'admin' , 'middelware' => 'geust'] , function() {
-    Route::get('/login' , [AdminController::class , 'index'])->name('login_view');
-    Route::post('/login' , [AdminController::class , 'check'])->name('check_login');
+Route::group(['namespace' => 'Admin' , 'prefix' => 'admin' , 'middelware' => 'guest:admin'] , function() {
+    Route::get('/login' , [LoginController::class , 'index'])->name('login_view');
+    Route::post('/login' , [LoginController::class , 'login'])->name('check_login');
 });

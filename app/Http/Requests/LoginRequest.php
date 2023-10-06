@@ -17,13 +17,21 @@ class LoginRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
     public function rules(): array
     {
         return [
-            'username' => 'require',
-            'password' => 'require'
+         'username'=>'required',
+         'password'=>'required'
         ];
+
+    }
+    public function messages()
+    {
+    return [
+     'username.required'=>'اسم المستخدم مطلوب',
+     'password.required'=>'كلمة المرور مطلوبة'
+    ];
     }
 }

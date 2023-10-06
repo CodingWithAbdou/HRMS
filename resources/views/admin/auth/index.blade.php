@@ -18,10 +18,20 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     </head>
+    <style>
+        .error {
+            text-align: right
+        }
+    </style>
     <body class="hold-transition login-page">
     <div class="login-box">
         <div class="card">
             <div class="card-body login-card-body">
+                @if(Session::has('error'))
+                <div class="alert alert-danger error">
+                    {{Session::get('error')}}
+                </div>
+                @endif
                 <p class="login-box-msg">مرحبا بك </p>
                 <form action="{{route('check_login')}}" method="post">
                     @csrf
@@ -33,6 +43,9 @@
                             </div>
                         </div>
                     </div>
+                    @error('username')
+                    <div class="mt-1 mb-1 pt-1 pb-1 alert text-danger block wi-100">{{ $message }}</div>
+                    @enderror
                     <div class="input-group mb-3">
                         <input type="password" name="password" class="form-control" placeholder="الرقم السري" dir="rtl">
                         <div class="input-group-append">
@@ -41,6 +54,9 @@
                             </div>
                         </div>
                     </div>
+                    @error('password')
+                        <div class="mt-1 mb-1 pt-1 pb-1   alert text-danger block wi-100">{{$message }}</div>
+                    @enderror
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary btn-block btn-flat">تسجيل الدخول</button>
                     </div>

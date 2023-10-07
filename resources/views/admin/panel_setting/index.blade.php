@@ -3,6 +3,7 @@
 @section('min_title' , 'الرئيسية')
 @section('min_title_name' , 'الضبط العام ')
 @section('min_title_subname' , 'العرض')
+
 <style>
     .w-30 {
         width: 30%;
@@ -27,7 +28,7 @@
 
                 <tr>
                     <th class="w-30">حالة التفعيل</th>
-                    <th class="w-70">{{$data->system_status}}</th>
+                    <th class="w-70">{{$data->system_status == 1 ? "مفعل" : "غير مفعلة"}}</th>
                 </tr>
 
                 <tr>
@@ -112,9 +113,9 @@
 
                 <tr >
                     <th colspan="2" class="text-center">
-                        <button  class="btn btn-danger rounded-4 my-2 ms-auto">
+                        <a  href="{{route('general_settings_edit')}}" class="btn btn-danger rounded-4 my-2 ms-auto">
                             تعديل اليبانات
-                        </button>
+                        </a>
                     </th>
                 </tr>
 

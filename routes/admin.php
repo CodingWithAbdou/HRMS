@@ -23,6 +23,8 @@ Route::group(['namespace' => 'Admin' , 'prefix' => 'admin' , 'middleware' => 'au
 
     // Panel Settings
     Route::get('/generalSetting' , [Admin_panel_settingController::class, 'index'])->name('general_settings_view');
+    Route::get('/generalSetting/edit' , [Admin_panel_settingController::class, 'edit'])->name('general_settings_edit');
+    Route::post('/generalSetting/update' , [Admin_panel_settingController::class, 'update'])->name('general_settings_update');
 
 });
 Route::group(['namespace' => 'Admin' , 'prefix' => 'admin' , 'middleware' => 'guest:admin'] , function() {

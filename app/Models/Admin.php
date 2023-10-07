@@ -22,7 +22,7 @@ class Admin extends Authenticatable
         'date',
         'com_code',
     ];
-    protected $casts = [
-        'password' => 'hashed',
-    ];
+    // protected $casts = [
+    //     'password' => 'hashed',
+    // ];
 }

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('admin_panel_settings', function (Blueprint $table) {
             $table->id();
             $table->string('name' , 255);
-            $table->tinyInteger('system_status')->comment('one active zero desactive');
-            $table->string('iamge' , 255)->nullable();
+            $table->tinyInteger('system_status')->default(0)->comment('one active zero desactive');
+            $table->string('image' , 255)->nullable();
             $table->string('phones' , 255);
             $table->string('address' , 255);
             $table->string('email' , 255);

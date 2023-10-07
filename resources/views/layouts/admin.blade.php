@@ -12,10 +12,14 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/adminlte.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="{{ asset('assets/admin/fonts/SansPro/SansPro.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap_rtl-v4.2.1/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv" crossorigin="anonymous">
+
+    {{-- <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap_rtl-v4.2.1/bootstrap.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap_rtl-v4.2.1/custom_rtl.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/mycustomstyle.css') }}">
-    {{-- @yield('css') --}}
+    @yield('css')
+    {{-- @vite('resources/css/app.css') --}}
+
     </head>
     <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -58,6 +62,7 @@
     <script src="{{ asset('assets/admin/js/General.js') }}"></script>
     @yield('script')
 
+    {{-- @vite('resources/js/app.js') --}}
 
     </body>
 </html>

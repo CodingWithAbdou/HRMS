@@ -20,8 +20,36 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row" style="background-color: white;">
+                <div  class="{{ session('error') ? '' : 'd-none' }} alert-new  alert alert-danger col-12 mb-0 py-3 mx-2 my-2">
+                    <span class="fs-5">{{ session('error')}}</span>
+                </div>
+                <div  class="{{ session('success') ? '' : 'd-none' }} alert-new  alert alert-success col-12 mb-0 py-3 mx-2 my-2 ">
+                    <span class="fs-5">{{ session('success')}}</span>
+                </div>
                     @yield('content')
             </div>
         </div>
     </div>
 </div>
+
+
+<style>
+
+    .w-30 {
+        width: 30%  !important;
+    }
+    .w-70 {
+        width: 70%  !important;
+    }
+</style>
+
+<script>
+
+    document.querySelectorAll('.alert-new').forEach(alert => {
+        if(!alert.classList.contains('d-none')) {
+            setTimeout(() => {
+                alert.classList.add('d-none')
+            }, 2000);
+        }
+    });
+</script>

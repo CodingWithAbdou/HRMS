@@ -45,8 +45,9 @@ class Admin_panel_settingController extends Controller
         $data['sanctions_value_fourth_abcence'] = $request->sanctions_value_fourth_abcence;
         $data['updated_by'] = auth()->user()->id;
 
-        // dd($request);
         Admin_panel_setting::where('com_code' , auth()->user()->com_code)->update($data);
+        session()->flash('success' , 'تم تحديث بيانات الضبط الرئيسية بنجاح');
+
         return redirect()->route('general_settings_view');
     }
 }

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+define('PAGINATION_COUNT' , 10);
 Route::group([ 'prefix' => 'admin' , 'middleware' => 'auth:admin'] , function() {
     Route::get('/' , [DashboardController::class , 'index'])->name('dashboard_view');
     Route::get('/logout' , [LoginController::class , 'logout'])->name('logout_view');

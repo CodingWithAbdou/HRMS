@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Finance_calenders_Request;
 use App\Models\Finance_calender;
 use App\Models\Finance_cln_period;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Finance_cln_periodController extends Controller
 {
@@ -14,8 +16,8 @@ class Finance_cln_periodController extends Controller
      */
     public function index()
     {
-        $data =  Finance_calender::where('com_code' , auth()->user()->com_code)->first();
-        return view('Finance_calender.index' , compact('data'));
+        $data =  Finance_calender::select('*')->orderby('FINANCE_YR' , "DESC")->paginate(PAGINATION_COUNT);
+        return view('admin.Finance_calender.index' , compact('data'));
     }
 
     /**
@@ -23,15 +25,31 @@ class Finance_cln_periodController extends Controller
      */
     public function create()
     {
-        return view('Finance_calender.create');
+        return view('admin.Finance_calender.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Finance_calenders_Request $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+            $data['FINANCE_YR'] = $request->FINANCE_YR ;
+            $data['FINANCE_YR_DESC'] = $request->FINANCE_YR_DESC;
+            $data['start_date'] = $request->start_date;
+            $data['end_date'] = $request->end_date;
+            $data['added_by'] = auth()->user()->id;
+            $data['com_code'] = auth()->user()->com_code;
+            $flage = Finance_calender::insert($data);
+            DB::commit();
+            return redirect()->route('finance.index')->with(['success' =>'تم ادخال يسنات السنة الجديدة بنجاح']);
+
+        }catch(\Exception $ex) {
+            DB::rollBack();
+            // DB::rollBack();
+            return redirect()->back()->with(['error' => 'عفوا حدث خطا ' . $ex->getMessage()])->withInput();
+        }
     }
 
     /**
@@ -40,7 +58,7 @@ class Finance_cln_periodController extends Controller
     public function show(string $id)
     {
         $data =  Finance_cln_period::find($id);
-        return view('Finance_calender.show' , compact('data'));
+        return view('admin.Finance_calender.show' , compact('data'));
     }
 
     /**

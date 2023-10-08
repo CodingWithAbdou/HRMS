@@ -1,7 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Finance_calender;
+use App\Models\Finance_cln_period;
 use Illuminate\Http\Request;
 
 class Finance_cln_periodController extends Controller
@@ -11,7 +14,8 @@ class Finance_cln_periodController extends Controller
      */
     public function index()
     {
-        //
+        $data =  Finance_calender::where('com_code' , auth()->user()->com_code)->first();
+        return view('Finance_calender.index' , compact('data'));
     }
 
     /**
@@ -19,7 +23,7 @@ class Finance_cln_periodController extends Controller
      */
     public function create()
     {
-        //
+        return view('Finance_calender.create');
     }
 
     /**
@@ -35,7 +39,8 @@ class Finance_cln_periodController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data =  Finance_cln_period::find($id);
+        return view('Finance_calender.show' , compact('data'));
     }
 
     /**

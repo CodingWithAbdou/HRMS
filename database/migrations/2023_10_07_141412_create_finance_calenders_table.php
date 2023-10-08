@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->tinyInteger('is_open')->default(0);
-            $table->integer('com_ocode');
+            $table->integer('com_code');
             $table->integer('added_by');
             $table->integer('updated_by');
             $table->timestamps();
